@@ -56,7 +56,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">membersrvc</a>
+                <a class="navbar-brand" href="#"><b>membersrvc web gui</b></a>
             </div>
             <!-- /.navbar-header -->
 
@@ -88,10 +88,22 @@
                                 <h4><i class="fa fa-database fa-fw"></i>TLSCA</h4 >
                             </li>
                             <li>
-                                <a href="index.php?view=cert"><i class="fa fa-lock fa-fw"></i> Certificates</a>
+                                <a href="index.php?view=tlsca_cert"><i class="fa fa-lock fa-fw"></i> Certificates</a>
                             </li>
                             <li>
-                                <a href="index.php?view=user"><i class="fa fa-users fa-fw"></i> Users</a>
+                                <a href="index.php?view=tlsca_user"><i class="fa fa-users fa-fw"></i> Users</a>
+                            </li>
+                            <li>
+                                <h4><i class="fa fa-database fa-fw"></i>TCA</h4 >
+                            </li>
+                            <li>
+                                <a href="index.php?view=tca_cert"><i class="fa fa-lock fa-fw"></i> Certificates</a>
+                            </li>
+                            <li>
+                                <a href="index.php?view=tca_tcert"><i class="fa fa-users fa-fw"></i> TCertificate Sets</a>
+                            </li>
+                            <li>
+                                <a href="index.php?view=tca_user"><i class="fa fa-users fa-fw"></i> Users</a>
                             </li>
                         </ul>
                     </div>

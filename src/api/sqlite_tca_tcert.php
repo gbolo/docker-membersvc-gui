@@ -12,10 +12,10 @@ use Ozdemir\Datatables\Datatables;
 use Ozdemir\Datatables\DB\SQLite;
 
 // Create object
-$path = 'db/eca.db';
+$path = 'db/tca.db';
 $dt = new Datatables(new SQLite($path));
 // Query
-$dt->query('SELECT row, id, enrollmentId, role, metadata, state FROM Users');
+$dt->query('SELECT row, enrollmentID, timestamp FROM TCertificateSets');
 
 // Respond with results
 echo $dt->generate();

@@ -12,7 +12,7 @@ use Ozdemir\Datatables\Datatables;
 use Ozdemir\Datatables\DB\SQLite;
 
 // Create object
-$path = 'eca.db';
+$path = 'db/eca.db';
 $dt = new Datatables(new SQLite($path));
 // Query
 $dt->query('SELECT row, id, timestamp, usage FROM Certificates');
