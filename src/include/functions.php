@@ -7,7 +7,7 @@ if (isset($_GET['view'])){
 			$view = $_GET['view'];
 			$view_title = 'TLS Certificates';
 			break;
-		case 'tlsca_users':
+		case 'tlsca_user':
 			$view = $_GET['view'];
 			$view_title = 'TLS Users';
 			break;
