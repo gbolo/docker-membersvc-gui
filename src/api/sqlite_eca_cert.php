@@ -15,7 +15,20 @@ use Ozdemir\Datatables\DB\SQLite;
 $path = 'db/eca.db';
 $dt = new Datatables(new SQLite($path));
 // Query
-$dt->query('SELECT row, id, timestamp, usage FROM Certificates');
+$dt->query('SELECT id, timestamp, usage, row FROM Certificates');
+
+// Modify output
+$dt->edit('timestamp', function ($data){
+  $epoc = $data['timestamp'] / 1000000000;
+  $en_date = gmdate("Y-M-d @ h:m:s A", $epoc);
+  return $en_date;
+});
+
+$dt->edit('row', function ($data){
+  $link = "api/eca_cert.php?row={$data['row']}";
+  $html_link = "<a href='{$link}' target='_blank'>Cert Info</a>";
+  return $html_link;
+});
 
 // Respond with results
 echo $dt->generate();
