@@ -8,8 +8,8 @@ VOLUME ["/data"]
 # -----------------------------------------------------------------------------
 # Install required software
 # -----------------------------------------------------------------------------
-RUN apk add --no-cache bash supervisor mariadb-client \
-    nginx php5-fpm php5-pdo php5-json php5-curl php5-pdo_mysql php5-pdo_sqlite
+RUN apk add --no-cache bash supervisor mariadb-client nginx \
+    php5-fpm php5-pdo php5-json php5-curl php5-pdo_mysql php5-pdo_sqlite php5-openssl
 
 # -----------------------------------------------------------------------------
 # Prepare and configure
