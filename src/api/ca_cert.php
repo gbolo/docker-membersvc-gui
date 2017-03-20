@@ -19,12 +19,14 @@ if ( isset($_GET['db']) ){
 }
 */
 
-if ( !isset($_GET['row']) || !is_numeric($_GET['row']) ){
-  echo "error: row not specified";
+if ( !isset($_GET['s']) || !isset($_GET['a']) ){
+  echo "error: serial_number and/or authority_key_identifier missing!!";
   exit(0);
 }
 
-$row = $_GET['row'];
+$serial = $_GET['s'];
+$auth_key = $_GET['a'];
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -48,8 +50,8 @@ function pem2der($pem_data) {
   return $der;
 }
 
-$db = new PDO('sqlite:db/eca.db');
-$stmt = $db->prepare("SELECT id, timestamp, usage, cert FROM Certificates WHERE row = $row");
+$db = new PDO('sqlite:db/fabric-ca.db');
+$stmt = $db->prepare("SELECT id, serial_number, authority_key_identifier, ca_label, status, reason, expiry, revoked_at, pem FROM Certificates WHERE serial_number = '$serial' AND authority_key_identifier = '$auth_key';");
 $stmt->execute();
 $row = $stmt->fetch();
 
@@ -58,7 +60,7 @@ if ( !is_array($row) ) {
   exit(0);
 }
 
-$cert = der2pem($row['cert']);
+$cert = $row['pem'];
 $cert_info = openssl_x509_parse($cert);
 $fingerprint = openssl_x509_fingerprint($cert, "sha1");
 
@@ -72,11 +74,9 @@ if ( isset($_GET['fingerprint']) ){
   exit(0);
 }
 
-$epoc = $row['timestamp'] / 1000000000;
-$en_date = gmdate("Y-M-d @ h:m:s A", $epoc);
 echo "<pre><h2>Enrollment Id: {$row['id']}</h2>";
-echo "<b>Enrollment Date:</b> {$en_date} \n";
-echo "<b>Enrollment Usage:</b> {$row['usage']} \n";
+echo "<b>Enrollment Expiry:</b> {$row['expiry']} \n";
+echo "<b>Enrollment Status:</b> {$row['status']} \n";
 echo "<hr />";
 
 echo "\nSHA1 Fingerprint: ".sha1_format($fingerprint)."\n \n";

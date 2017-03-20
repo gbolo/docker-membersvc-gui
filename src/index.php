@@ -56,7 +56,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><b>membersrvc web gui</b></a>
+                <a class="navbar-brand" href="#"><b>fabric-ca-server web gui</b></a>
             </div>
             <!-- /.navbar-header -->
 
@@ -76,34 +76,34 @@
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li>
-                                <h4><i class="fa fa-database fa-fw"></i>ESCA</h4 >
+                                <h4><i class="fa fa-database fa-fw"></i> Fabric-CA Server</h4 >
                             </li>
                             <li>
-                                <a href="index.php?view=eca_cert"><i class="fa fa-lock fa-fw"></i> Certificates</a>
+                                <a href="index.php?view=ca_cert"><i class="fa fa-lock fa-fw"></i> Certificates</a>
                             </li>
                             <li>
-                                <a href="index.php?view=eca_user"><i class="fa fa-users fa-fw"></i> Users</a>
+                                <a href="index.php?view=ca_user"><i class="fa fa-users fa-fw"></i> Users</a>
                             </li>
                             <li>
-                                <h4><i class="fa fa-database fa-fw"></i>TLSCA</h4 >
+                                <a href="index.php?view=ca_affil"><i class="fa fa-building fa-fw"></i> Affiliations</a>
+                            </li>
+                            <li class="active">
+                                <a href="#"><i class="fa fa-external-link fa-fw"></i> External Links<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level collapse in" aria-expanded="true">
+                                    <li>
+                                        <a target="_blank" href="https://github.com/hyperledger/fabric">github Fabric</a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="https://github.com/hyperledger/fabric-ca">github Fabric-CA</a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="http://hyperledger-fabric.readthedocs.io/en/latest/">Hyperledger Fabric Docs</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="index.php?view=tlsca_cert"><i class="fa fa-lock fa-fw"></i> Certificates</a>
-                            </li>
-                            <li>
-                                <a href="index.php?view=tlsca_user"><i class="fa fa-users fa-fw"></i> Users</a>
-                            </li>
-                            <li>
-                                <h4><i class="fa fa-database fa-fw"></i>TCA</h4 >
-                            </li>
-                            <li>
-                                <a href="index.php?view=tca_cert"><i class="fa fa-lock fa-fw"></i> Certificates</a>
-                            </li>
-                            <li>
-                                <a href="index.php?view=tca_tcert"><i class="fa fa-users fa-fw"></i> TCertificate Sets</a>
-                            </li>
-                            <li>
-                                <a href="index.php?view=tca_user"><i class="fa fa-users fa-fw"></i> Users</a>
+                                <a target="_blank" href="https://github.com/gbolo/docker-membersvc-gui  "><i class="fa fa-git fa-fw"></i> Contribute @ github</a>
                             </li>
                         </ul>
                     </div>
@@ -116,7 +116,7 @@
         <div id="page-wrapper" >
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">membersrvc - <?php echo $view_title; ?></h1>
+                    <h1 class="page-header">fabric-ca - <?php echo $view_title; ?></h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

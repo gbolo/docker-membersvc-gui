@@ -3,42 +3,26 @@
 if (isset($_GET['view'])){
 	switch($_GET['view'])
 	{
-		case 'tlsca_cert':
+		case 'ca_cert':
 			$view = $_GET['view'];
-			$view_title = 'TLS Certificates';
+			$view_title = 'Certificates';
 			break;
-		case 'tlsca_user':
+		case 'ca_user':
 			$view = $_GET['view'];
-			$view_title = 'TLS Users';
+			$view_title = 'Users';
 			break;
-		case 'eca_user':
+		case 'ca_affil':
 			$view = $_GET['view'];
-			$view_title = 'Enrollment Users';
-			break;
-		case 'eca_cert':
-			$view = $_GET['view'];
-			$view_title = 'Enrollment Certificates';
-			break;
-		case 'tca_user':
-			$view = $_GET['view'];
-			$view_title = 'TCA Users';
-			break;
-		case 'tca_cert':
-			$view = $_GET['view'];
-			$view_title = 'TCA Certificates';
-			break;
-		case 'tca_tcert':
-			$view = $_GET['view'];
-			$view_title = 'TCA T Certificate Sets';
+			$view_title = 'Affiliations';
 			break;
 		default;
-			$view = 'tlsca_cert';
-			$view_title = 'TCA Certificates';
+			$view = 'ca_cert';
+			$view_title = 'Certificates';
 			break;
 	}
 }else{
-	$view = 'tlsca_cert';
-	$view_title = 'TLS Certificates';
+	$view = 'ca_cert';
+	$view_title = 'Certificates';
 }
 
 function datatables_html($view){
