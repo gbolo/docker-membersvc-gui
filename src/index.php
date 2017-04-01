@@ -210,7 +210,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: 'api/sqlite_<?php echo $view; ?>.php',
+                    url: 'api/db_<?php echo $view; ?>.php',
                     type: 'POST'
                 },
                 select: true,
