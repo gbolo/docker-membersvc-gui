@@ -50,8 +50,53 @@ function pem2der($pem_data) {
   return $der;
 }
 
+
+// setup db
+// default
+$DB_TYPE = 'sqlite';
 $db = new PDO('sqlite:db/fabric-ca.db');
-$stmt = $db->prepare("SELECT id, serial_number, authority_key_identifier, ca_label, status, reason, expiry, revoked_at, pem FROM Certificates WHERE serial_number = '$serial' AND authority_key_identifier = '$auth_key';");
+
+if ( getenv('CA_DB_TYPE') != false ){
+  $DB_TYPE = getenv('CA_DB_TYPE');
+}
+
+
+if ( strcasecmp ( $DB_TYPE, "mysql" ) == 0 ){
+  // defaults
+  $DB_HOST = "localhost";
+  $DB_PORT = "3306";
+  $DB_USERNAME = "dbuser";
+  $DB_PASSWORD = "password";
+  $DB_NAME = "fabric_ca";
+
+  // get overrides from env (12-factor app)
+  if ( getenv('DB_USERNAME') != false ){
+    $DB_USERNAME = getenv('DB_USERNAME');
+  }
+
+  if ( getenv('DB_PORT') != false ){
+    $DB_PORT = getenv('DB_PORT');
+  }
+
+  if ( getenv('DB_HOST') != false ){
+    $DB_HOST = getenv('DB_HOST');
+  }
+
+  if ( getenv('DB_PASSWORD') != false ){
+    $DB_PASSWORD = getenv('DB_PASSWORD');
+  }
+
+  if ( getenv('DB_NAME') != false ){
+    $DB_NAME = getenv('DB_NAME');
+  }
+
+  $db = new PDO("mysql:host={$DB_HOST};port={$DB_PORT};dbname={$DB_NAME}", $DB_USERNAME, $DB_PASSWORD);
+}
+
+$query = "SELECT id, serial_number, authority_key_identifier, ca_label, status, reason, expiry, revoked_at, pem
+FROM certificates WHERE serial_number = '{$serial}' AND authority_key_identifier = '{$auth_key}'";
+
+$stmt = $db->prepare($query);
 $stmt->execute();
 $row = $stmt->fetch();
 
